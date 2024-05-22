@@ -9,7 +9,7 @@ metadata:
 spec:
   project: pdss  
   destination:
-    server: https://kubernetes.default.svc
+    server: https://pdssaks-dns-iiw25e77.hcp.francecentral.azmk8s.io:443
     namespace: frontend
   source:
     repoURL: 'https://github.com/BouhlelRochdi/K8s_pdss.git'  #replace with your username
