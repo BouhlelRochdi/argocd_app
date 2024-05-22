@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pdss-front
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+
+spec:
+  project: pdss  
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: frontend
+  source:
+    repoURL: 'https://github.com/BouhlelRochdi/K8s_pdss.git'  #replace with your username
+    path: ./deployment-front.yaml
+    targetRevision: HEAD
+      
+  syncPolicy:
+    ## https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - Replace=true
+    - ApplyOutOfSyncOnly=true
+
+          
